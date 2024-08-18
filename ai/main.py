@@ -1,10 +1,12 @@
 import os
+import logging
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer
 from pydantic import BaseModel
 import httpx
 
 app = FastAPI()
+logging.basicConfig(level=logging.INFO)
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl='token')
 
@@ -32,9 +34,20 @@ def validate_token(token: str) -> bool:
     # Placeholder function for token validation logic
     return token == 'valid-token'
 
+
 def call_sap_ai_core(input_data: dict) -> dict:
-    # Placeholder function for calling SAP AI Core services
     url = 'https://sap-ai-core-endpoint.com/predict'
-    headers = {'Authorization': f'Bearer {os.getenv('SAP_AI_CORE_API_KEY')}', 'Content-Type': 'application/'}
-    response = httpx.post(url, headers=headers, ={'input': input_data})
-    return response.()
+    headers = {
+        'Authorization': f'Bearer {os.getenv("SAP_AI_CORE_API_KEY")}',
+        'Content-Type': 'application/'
+    }
+    try:
+        response = httpx.post(url, headers=headers, ={'input': input_data})
+        response.raise_for_status()
+        return response.()
+    except httpx.HTTPStatusError as e:
+        logging.error(f"HTTP error occurred: {e}")
+        raise HTTPException(status_code=response.status_code, detail=str(e))
+    except Exception as e:
+        logging.error(f"An error occurred: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
