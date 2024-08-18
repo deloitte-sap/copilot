@@ -1,0 +1,20 @@
+{
+  "xsappname": "copilot-xsuaa",
+  "tenant-mode": "dedicated",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.Administrator",
+      "description": "Administrator"
+    }
+  ],
+  "attributes": [],
+  "role-templates": [
+    {
+      "name": "Administrator",
+      "description": "Administrator",
+      "scope-references": [
+        "$XSAPPNAME.Administrator"
+      ]
+    }
+  ]
+}

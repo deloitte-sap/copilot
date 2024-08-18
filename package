@@ -1,0 +1,15 @@
+{
+  "name": "copilot",
+  "version": "1.0.0",
+  "description": "SAP CAP Backend for Copilot",
+  "dependencies": {
+    "@sap/cds": "^5",
+    "express": "^4",
+    "passport": "^0.4",
+    "xssec": "^3",
+    "@sap/xsenv": "^3"
+  },
+  "scripts": {
+    "start": "cds run"
+  }
+}
