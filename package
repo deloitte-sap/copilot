@@ -1,15 +1,19 @@
 {
-  "name": "copilot",
+  "name": "sap-cap-assistant",
   "version": "1.0.0",
-  "description": "SAP CAP Backend for Copilot",
+  "description": "SAP CAP Application for Digital Assistant",
+  "scripts": {
+    "start": "cds run",
+    "test": "mocha test"
+  },
   "dependencies": {
     "@sap/cds": "^5",
-    "express": "^4",
-    "passport": "^0.4",
-    "xssec": "^3",
-    "@sap/xsenv": "^3"
+    "@sap/xssec": "^3",
+    "@sap/xsenv": "^3",
+    "express": "^4"
   },
-  "scripts": {
-    "start": "cds run"
+  "devDependencies": {
+    "mocha": "^8",
+    "chai": "^4"
   }
 }

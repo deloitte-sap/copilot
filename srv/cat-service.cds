@@ -1,5 +1,9 @@
-using { Entity } from '@sap/cds';
 
-service CatalogService {
-  entity Books as projection on my.Books;
+using { managed, sap } from '@sap/cds/common';
+
+entity Messages : managed {
+  key ID : UUID;
+  sender : String;
+  message : String;
 }
+    

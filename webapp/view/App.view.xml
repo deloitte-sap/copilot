@@ -1,16 +1,26 @@
-
 <mvc:View
-  xmlns:mvc="sap.ui.core.mvc"
-  xmlns="sap.m"
-  displayBlock="true">
-  <App>
-    <pages>
-      <Page title="{i18n>appTitle}">
-        <content>
-          <Text text="{i18n>appDescription}" />
-        </content>
-      </Page>
-    </pages>
-  </App>
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true"
+    controllerName="sap.ui.demo.walkthrough.controller.App">
+    <App>
+        <pages>
+            <Page title="SAP UI5 Chat Interface">
+                <VBox class="sapUiSmallMargin">
+                    <TextArea id="chatInput" rows="4" placeholder="Type your query here..." liveChange="onInputChange"/>
+                    <Button text="Send" press="onSend"/>
+                    <List id="chatList" items="{/messages}">
+                        <items>
+                            <CustomListItem>
+                                <VBox>
+                                    <Text text="{sender}"/>
+                                    <Text text="{message}"/>
+                                </VBox>
+                            </CustomListItem>
+                        </items>
+                    </List>
+                </VBox>
+            </Page>
+        </pages>
+    </App>
 </mvc:View>
-  

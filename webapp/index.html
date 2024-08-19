@@ -1,31 +1,28 @@
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>SAP UI5 App</title>
-    <script
-      id="sap-ui-bootstrap"
-      src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
-      data-sap-ui-theme="sap_fiori_3"
-      data-sap-ui-libs="sap.m"
-      data-sap-ui-xx-bindingSyntax="complex"
-      data-sap-ui-compatVersion="edge"
-      data-sap-ui-preload="async">
+<head>
+    <meta charset="UTF-8">
+    <title>SAP UI5 Chat Interface</title>
+    <script id="sap-ui-bootstrap"
+        src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+        data-sap-ui-theme="sap_belize"
+        data-sap-ui-libs="sap.m"
+        data-sap-ui-xx-bindingSyntax="complex">
     </script>
     <script>
-      sap.ui.getCore().attachInit(function () {
-        sap.ui.require(["sap/ui/core/ComponentContainer"], function (ComponentContainer) {
-          new ComponentContainer({
-            name: "sap.ui.demo.walkthrough",
-            settings: {
-              id: "walkthrough"
-            },
-            async: true
-          }).placeAt("content");
+        sap.ui.getCore().attachInit(function() {
+            sap.ui.require([
+                "sap/ui/core/mvc/XMLView"
+            ], function(XMLView) {
+                XMLView.create({
+                    viewName: "sap.ui.demo.walkthrough.view.App"
+                }).then(function(oView) {
+                    oView.placeAt("content");
+                });
+            });
         });
-      });
     </script>
-  </head>
-  <body class="sapUiBody" id="content"></body>
+</head>
+<body class="sapUiBody" id="content">
+</body>
 </html>
